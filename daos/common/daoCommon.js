@@ -1,4 +1,5 @@
 const con = require('../../config/dbconfig')
+const { queryAction } = require('../../helpers/queryAction')
 
 const daoCommon = {
 
@@ -8,23 +9,30 @@ const daoCommon = {
         con.query(
             `SELECT * FROM ${table};`,
             (error, rows)=> {
-                if (!error) {
-                    if (rows.length === 1) {
-                        res.json(...rows)
-                    } else {
-                        res.json(rows)
-                    }
-                } else {
-                    console.log(`Dao Error: ${error}`)
-                    res.json({
-                        'message': 'error',
-                        'table': `${table}`,
-                        'error': error
-                    })
-                }
+                queryAction(res, error, rows, table)
             }
         )
-    } 
+    },
+    
+    findById: (res, table, id)=> {
+
+        con.query(
+            `SELECT * FROM ${table} WHERE ${table}_id = ${id};`,
+            (error, rows)=> {
+                queryAction(res, error, rows, table)
+            }    
+        )
+    },
+    
+    sort: (res, table, sorter)=> {
+
+        con.query(
+            `SELECT * FROM ${table} ORDER BY ${sorter}`,
+            (error, rows)=> {
+                queryAction(res, error, rows, table)
+            }
+        )
+    }
 }
 
 module.exports = daoCommon
