@@ -5,9 +5,12 @@ const PORT = process.env.PORT || 3000
 // Root Route => http://localhost:3000/api
 router.get('/api', (req, res)=> {
     res.json({
-        'All Movies': `http://localhost:${PORT}/api/movie`
+        'All Movies': `http://localhost:${PORT}/api/program`
     })
 })
+
+// http://localhost:3000:api/program
+router.use('/api/program', require ('./api/programRoutes'))
 
 //Error Page
 router.use((req, res, next)=> {
