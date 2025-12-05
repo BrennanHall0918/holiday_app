@@ -5,7 +5,8 @@ const { programDao: dao } = require('../../daos/dao')
 
 // http://localhost:3000/api/program
 router.get('/', (req, res)=> {
-    dao.findAll(req, res, dao.table)
+    //dao.findAll(req, res, dao.table)
+    dao.findProgramInfo(res, dao.table)
 })
 
 // http:localhost:3000/api/${table}/${sorter}
