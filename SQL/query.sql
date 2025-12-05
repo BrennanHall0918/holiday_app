@@ -7,7 +7,7 @@ JOIN production pr
 ON p.production_id = pr.production_id
 ORDER BY p.program_id;
 
---The Everything Query(Production, Actors, Directs, Streaming, and Genres)
+--Joins All Tables(Production, Actors, Directors, Streaming, and Genres) With Program
 SELECT
     p.program_id,
     p.title,
