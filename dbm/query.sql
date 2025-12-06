@@ -56,3 +56,24 @@ LEFT JOIN streaming_platform sp
 GROUP BY
     p.program_id
 ORDER BY p.program_id ASC;
+
+--Fixing AutoIncrememnt(dunno why but it broke)
+ALTER TABLE program_to_streaming DROP FOREIGN KEY fk_prog_str;
+ALTER TABLE program_to_actor DROP FOREIGN KEY fk_prog_act;
+ALTER TABLE program_to_genre DROP FOREIGN KEY fk_prog_gen;
+ALTER TABLE program_to_director DROP FOREIGN KEY fk_prog_dir;
+
+ALTER TABLE program
+MODIFY program_id MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE program_to_streaming
+ADD CONSTRAINT fk_prog_str FOREIGN KEY (program_id) REFERENCES program(program_id);
+
+ALTER TABLE program_to_actor
+ADD CONSTRAINT fk_prog_act FOREIGN KEY (program_id) REFERENCES program(program_id);
+
+ALTER TABLE program_to_genre
+ADD CONSTRAINT fk_prog_gen FOREIGN KEY (program_id) REFERENCES program(program_id);
+
+ALTER TABLE program_to_director
+ADD CONSTRAINT fk_prog_dir FOREIGN KEY (program_id) REFERENCES program(program_id);

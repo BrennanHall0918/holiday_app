@@ -3,7 +3,23 @@ const { queryAction } = require('../../helpers/queryAction')
 
 const daoCommon = {
 
-    // Database Queries
+     // Database Queries
+    create: (res, table, fields)=> {
+        const columns = Object.keys(fields)
+        const values = Object.values(fields)
+
+        const placeholders = columns.map(()=> '?').join(', ')
+        const colList = columns.join(', ')
+
+        const sql = `
+            INSERT INTO ${table} (${colList})
+            VALUES (${placeholders});`
+
+            con.query(sql, values, (error, result)=> {
+                queryAction(res, error, result, table)
+            })
+    },
+
     findAll: (req, res, table) => {
 
         con.query(
@@ -32,6 +48,24 @@ const daoCommon = {
                 queryAction(res, error, rows, table)
             }
         )
+    },
+
+    countAll: (res, table)=> {
+
+        con.query(
+            `SELECT COUNT(*) AS total FROM ${table};`,
+            (error, rows)=> {
+                queryAction(res, error, rows, table)
+            }
+        )
+    },
+
+    search: (res, table, column, term)=> {
+        const sql = `SELECT * FROM ${table} WHERE ${column} LIKE ?;`
+
+        con.query(sql, [`%${term}%`], (error, rows)=> {
+            queryAction(res, error, rows, table)
+        })
     }
 }
 

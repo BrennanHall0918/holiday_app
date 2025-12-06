@@ -10,7 +10,7 @@ const queryAction =(obj, error, rows, table)=> {
         console.log(`Dao Error: ${error}`)
         obj.json({
             'message': 'error',
-            'table': `${t}`,
+            'table': `${table}`,
             'error': error
         })
     }

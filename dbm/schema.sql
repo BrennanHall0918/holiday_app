@@ -66,27 +66,29 @@ CREATE TABLE program (
 CREATE TABLE program_to_streaming (
     program_id MEDIUMINT UNSIGNED NOT NULL,
     streaming_platform_id TINYINT UNSIGNED NOT NULL,
-    CONSTRAINT fk_mov_str FOREIGN KEY (program_id) REFERENCES program (program_id),
+    CONSTRAINT fk_prog_str FOREIGN KEY (program_id) REFERENCES program (program_id),
     CONSTRAINT fk_str_mov FOREIGN KEY (streaming_platform_id) REFERENCES streaming_platform (streaming_platform_id)
 ); 
 
 CREATE TABLE program_to_actor (
     program_id MEDIUMINT UNSIGNED NOT NULL,
     actor_id SMALLINT UNSIGNED NOT NULL,
-    CONSTRAINT fk_mov_act FOREIGN KEY (program_id) REFERENCES program (program_id),
+    CONSTRAINT fk_prog_act FOREIGN KEY (program_id) REFERENCES program (program_id),
     CONSTRAINT fk_act_mov FOREIGN KEY (actor_id) REFERENCES actor (actor_id)
 );
 
 CREATE TABLE program_to_genre (
     program_id MEDIUMINT UNSIGNED NOT NULL,
     genre_id TINYINT UNSIGNED NOT NULL,
-    CONSTRAINT fk_mov_gen FOREIGN KEY (program_id) REFERENCES program (program_id),
+    CONSTRAINT fk_prog_gen FOREIGN KEY (program_id) REFERENCES program (program_id),
     CONSTRAINT fk_gen_mov FOREIGN KEY (genre_id) REFERENCES genre (genre_id)
 );
 
 CREATE TABLE program_to_director (
     program_id MEDIUMINT UNSIGNED NOT NULL,
     director_id TINYINT UNSIGNED NOT NULL,
-    CONSTRAINT fk_mov_dir FOREIGN KEY (program_id) REFERENCES program (program_id),
+    CONSTRAINT fk_prog_dir FOREIGN KEY (program_id) REFERENCES program (program_id),
     CONSTRAINT fk_dir_mov FOREIGN KEY (director_id) REFERENCES director (director_id)
 );
+
+
