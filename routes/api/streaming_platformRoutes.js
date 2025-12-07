@@ -23,19 +23,29 @@ router.get('/sort/:sorter', (req, res)=> {
     dao.sort(res, dao.table, req.params.sorter)
 })
 
-// http://localhost:300/api/streaming_platform/count
+// http://localhost:3000/api/streaming_platform/count
 router.get('/count', (req,res)=> {
     dao.countAll(res, dao.table)
+})
+
+// http://localhost:3000/api/streaming_platform/findprogramsonplatform/${id}
+router.get('/findprogramsonplatform/:id', (req,res)=> {
+    dao.findProgramsOnPlatform(res, req.params.id, dao.table)
+})
+
+// http://localhost:3000/api/streaming_platform/platformuseagestats
+router.get('/platformuseagestats', (req,res)=> {
+    dao.platformUsageStats(res, dao.table)
+})
+
+// http://localhost:3000/api/streaming_platform/${id}
+router.put('/:id', (req,res)=> {
+    dao.update(res, dao.table, req.body, { program_id: req.params.id})
 })
 
 // http://localhost:3000/api/streaming_platform/${id}
 router.get('/:id', (req, res)=> {
     dao.findById(res, dao.table, req.params.id)
-})
-
-// http://lovalhost:300/api/streaming_platform/${id}
-router.put('/:id', (req,res)=> {
-    dao.update(res, dao.table, req.body, { program_id: req.params.id})
 })
 
 module.exports = router

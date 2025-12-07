@@ -63,6 +63,26 @@ const programDao = {
                 queryAction(res, error, rows, table)
             }
         )
+    },
+
+    filterByGrenre: (res, table, id)=> {
+        const sql = `SELECT 
+            p.title,
+            p.yr_released,
+            p.poster_url
+        FROM program p
+        INNER JOIN program_to_genre pg
+        ON p.program_id = pg.program_id
+        WHERE pg.genre_id = ?
+        ORDER BY p.title;`
+
+        con.query(
+            sql,
+            id,
+            (error, rows)=> {
+                queryAction(res, error, rows, table)
+            }
+        )
     }
 }
 

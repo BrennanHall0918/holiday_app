@@ -4,6 +4,11 @@ const { programDao: dao } = require('../../daos/dao')
 
 // http://localhost:3000/api/program
 router.get('/', (req, res)=> {
+    dao.findAll(req, res, dao.table)
+})
+
+// http://localhost:3000/api/program/findprograminfo
+router.get('/findprograminfo', (req, res)=> {
     dao.findProgramInfo(res, dao.table)
 })
 
@@ -36,6 +41,11 @@ router.get('/:id', (req,res)=> {
 // http://lovalhost:300/api/program/${id}
 router.put('/:id', (req,res)=> {
     dao.update(res, dao.table, req.body, { program_id: req.params.id})
+})
+
+// http://localhost:3000/api/program/filterbygenre/${genre_id}
+router.get('/filterbygenre/:id', (req, res)=> {
+    dao.filterByGrenre(res, dao.table, req.params.id)
 })
 
 module.exports = router

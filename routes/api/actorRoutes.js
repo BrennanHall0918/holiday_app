@@ -28,14 +28,24 @@ router.get('/count', (req,res)=> {
     dao.countAll(res, dao.table)
 })
 
+// http://localhost:3000/api/actor/appearsin/${id}
+router.get('/appearsin/:id', (req,res)=> {
+    dao.appearsIn(res, req.params.id, dao.table)
+})
+
+// http:localhost:3000/api/actor/mostprolific
+router.get('/mostprolific', (req, res)=> {
+    dao.mostProlific(res, dao.table)
+})
+
+// http://localhost:3000/api/actor/${id}
+router.put('/:id', (req,res)=> {
+    dao.update(res, dao.table, req.body, { program_id: req.params.id})
+})
+
 // http://localhost:3000/api/actor/${id}
 router.get('/:id', (req, res)=> {
     dao.findById(res, dao.table, req.params.id)
-})
-
-// http://lovalhost:300/api/actor/${id}
-router.put('/:id', (req,res)=> {
-    dao.update(res, dao.table, req.body, { program_id: req.params.id})
 })
 
 module.exports = router

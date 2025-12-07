@@ -9,7 +9,8 @@ router.get('/api', (req, res)=> {
         'Actors': `http://localhost:${PORT}/api/actor`,
         'Directors': `http://localhost:${PORT}/api/director`,
         'Production Companies': `http://localhost:${PORT}/api/production`,
-        'Streaming Platforms': `http://localhost:${PORT}/api/streaming_platform`
+        'Streaming Platforms': `http://localhost:${PORT}/api/streaming_platform`,
+        'Genres': `http://localhost:${PORT}/api/genre`
     })
 })
 

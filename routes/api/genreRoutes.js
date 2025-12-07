@@ -23,19 +23,28 @@ router.get('/sort/:sorter', (req, res)=> {
     dao.sort(res, dao.table, req.params.sorter)
 })
 
-// http://localhost:300/api/genre/count
+// http://localhost:3000/api/genre/count
 router.get('/count', (req,res)=> {
     dao.countAll(res, dao.table)
+})
+
+// http://localhost:3000/api/genre/mostused
+router.get('/mostused', (req,res)=> {
+    dao.mostUsed(res, dao.table)
+})
+
+router.get('/findprogramsbygenre/:id', (req,res)=> {
+    dao.findProgramsByGenre(res, req.params.id)
+})
+
+// http://localhost:3000/api/genre/${id}
+router.put('/:id', (req,res)=> {
+    dao.update(res, dao.table, req.body, { program_id: req.params.id})
 })
 
 // http://localhost:3000/api/genre/${id}
 router.get('/:id', (req, res)=> {
     dao.findById(res, dao.table, req.params.id)
-})
-
-// http://lovalhost:300/api/genre/${id}
-router.put('/:id', (req,res)=> {
-    dao.update(res, dao.table, req.body, { program_id: req.params.id})
 })
 
 module.exports = router

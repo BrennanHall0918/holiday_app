@@ -28,14 +28,19 @@ router.get('/count', (req,res)=> {
     dao.countAll(res, dao.table)
 })
 
-// http://localhost:3000/api/director/${id}
-router.get('/:id', (req, res)=> {
-    dao.findById(res, dao.table, req.params.id)
+// http://localhost:3000/api/director/directed/${id}
+router.get('/directed/:id', (req, res)=> {
+    dao.directed(res, req.params.id, dao.table)
 })
 
 // http://lovalhost:300/api/director/${id}
 router.put('/:id', (req,res)=> {
     dao.update(res, dao.table, req.body, { program_id: req.params.id})
+})
+
+// http://localhost:3000/api/director/${id}
+router.get('/:id', (req, res)=> {
+    dao.findById(res, dao.table, req.params.id)
 })
 
 module.exports = router

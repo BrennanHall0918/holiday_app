@@ -54,7 +54,7 @@ CREATE TABLE program (
     yr_released YEAR,
     production_id TINYINT UNSIGNED NOT NULL,
     showing ENUM('theater', 'direct-to-tv') DEFAULT 'theater',
-    poster BLOB,
+    poster_url VARCHAR(255),
     format ENUM('live-action', 'animation', 'stop-motion') DEFAULT 'live-action',
     critic_score VARCHAR(5) NOT NULL,
     decription TEXT,

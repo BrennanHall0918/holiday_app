@@ -28,14 +28,24 @@ router.get('/count', (req,res)=> {
     dao.countAll(res, dao.table)
 })
 
-// http://localhost:3000/api/production/${id}
-router.get('/:id', (req, res)=> {
-    dao.findById(res, dao.table, req.params.id)
+// http://localhost:3000/api/production.findprogrambyproduction/${id}
+router.get('/findprogrambyproduction/:id', (req, res)=> {
+    dao.findProgramsByProduction(res, req.params.id, dao.table)
+})
+
+// http://localhost:3000/api/production/productionactivity
+router.get('/productionactivity', (req, res)=> {
+    dao.productionActivity(res, dao.table)
 })
 
 // http://lovalhost:300/api/production/${id}
 router.put('/:id', (req,res)=> {
     dao.update(res, dao.table, req.body, { program_id: req.params.id})
+})
+
+// http://localhost:3000/api/production/${id}
+router.get('/:id', (req, res)=> {
+    dao.findById(res, dao.table, req.params.id)
 })
 
 module.exports = router
