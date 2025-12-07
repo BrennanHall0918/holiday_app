@@ -20,6 +20,28 @@ const daoCommon = {
             })
     },
 
+    update: (res, table, fields, conditions)=> {
+        const fieldColumns = Object.keys(fields)
+        const fieldValues = Object.values(fields)
+
+        const conditionColumns = Object.keys(conditions)
+        const conditionValues = Object.values(conditions)
+
+        const setClause = fieldColumns.map(col=> `${col} = ?` ).join(', ')
+        const whereClause= conditionColumns.map(col=> `${col} = ?`).join(' AND ')
+
+        const sql = `
+            UPDATE ${table}
+            SET ${setClause}
+            WHERE ${whereClause};`
+
+        const values = [...fieldValues, ...conditionValues]
+
+        con.query(sql, values, (error, result)=> {
+            queryAction(res, error, result, table)
+        })
+    },
+
     findAll: (req, res, table) => {
 
         con.query(

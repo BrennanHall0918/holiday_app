@@ -57,6 +57,7 @@ CREATE TABLE program (
     poster BLOB,
     format ENUM('live-action', 'animation', 'stop-motion') DEFAULT 'live-action',
     critic_score VARCHAR(5) NOT NULL,
+    decription TEXT,
     date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     last_update TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT pk_movie PRIMARY KEY (program_id),

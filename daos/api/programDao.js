@@ -18,6 +18,7 @@ const programDao = {
             p.showing,
             p.format,
             p.critic_score,
+            p.description,
             pr.production AS production_company,
             GROUP_CONCAT(DISTINCT g.genre  ORDER BY g.genre SEPARATOR ', ') AS genres,
             GROUP_CONCAT(DISTINCT CONCAT(a.first_name, ' ', a.last_name)

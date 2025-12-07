@@ -33,4 +33,9 @@ router.get('/:id', (req, res)=> {
     dao.findById(res, dao.table, req.params.id)
 })
 
+// http://lovalhost:300/api/genre/${id}
+router.put('/:id', (req,res)=> {
+    dao.update(res, dao.table, req.body, { program_id: req.params.id})
+})
+
 module.exports = router

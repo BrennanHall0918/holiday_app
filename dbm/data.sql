@@ -236,6 +236,116 @@ VALUES
 ('the night before', 'movie', 'r', '1:41:00', 'USA', 2015, 15, 'theater', NULL, 'live-action', '6.4'),
 ('eight crazy nights', 'movie', 'pg-13', '1:16:00', 'USA', 2002, 15, 'theater', NULL, 'animation', '5.3');
 
+--Program Description Column (Because I forgot)
+ALTER TABLE program
+ADD COLUMN description TEXT AFTER critic_score;
+
+--Adding Program Descriptions
+UPDATE program
+SET description = "Raised as an oversized elf, Buddy travels from the North Pole to New York City to meet his biological father, Walter Hobbs, who doesn't know he exists and is in desperate need of some Christmas spirit."
+WHERE program_id = 1;
+
+UPDATE program
+SET description = "A grumpy hermit hatches a plan to steal Christmas from the Whos of Whoville."
+WHERE program_id = 2;
+
+UPDATE program
+SET description = "An eight-year-old troublemaker, mistakenly left home alone, must defend his home against a pair of burglars on Christmas Eve."
+WHERE program_id = 3;
+
+UPDATE program
+SET description = "A New York City cop, John McClane, tries to save his estranged wife and several others taken hostage by terrorists during a Christmas Eve party at the Nakatomi Plaza Skyscraper in Los Angeles, California."
+WHERE program_id = 4;
+
+UPDATE program
+SET description = "After receiving an exotic small animal as a Christmas gift, a young man inadvertently breaks three important rules concerning his new pet, which unleashes a horde of malevolently mischievous creatures on a small town."
+WHERE program_id = 5;
+
+UPDATE program
+SET description = "On Christmas Eve, a young boy embarks on a magical adventure to the North Pole on the Polar Express, while learning about friendship, bravery, and the spirit of Christmas."
+WHERE program_id = 6;
+
+UPDATE program
+SET description = "Jack Skellington, king of Halloween Town, discovers Christmas Town, but his attempts to bring Christmas to his home causes confusion."
+WHERE program_id = 7;
+
+UPDATE program
+SET description = "An angel is sent from Heaven to help a desperately frustrated businessman see the value of his own life."
+WHERE program_id = 8;
+
+UPDATE program
+SET description = "A young reindeer Rudolph lives at the North Pole. His father is one of Santa's reindeer and it is expected that Rudolph will eventually be one too. However, he has a feature which is a setback and causes him to be ostracized: his red nose."
+WHERE program_id = 9;
+
+UPDATE program
+SET description = "In the 1940s, a young boy named Ralphie Parker attempts to convince his parents, teacher, and Santa Claus that a Red Ryder Range 200 Shot BB gun really is the perfect Christmas gift."
+WHERE program_id = 10;
+
+UPDATE program
+SET description = "Ebenezer Scrooge, a curmudgeonly, miserly businessman, has no time for sentimentality and largely views Christmas as a waste of time. However, this Christmas Eve, he will be visited by three spirits who will show him the error of his ways."
+WHERE program_id = 11;
+
+UPDATE program
+SET description = "The solitary life of an artificial man with scissors for hands is upended when he is taken in by a suburban family."
+WHERE program_id = 12;
+
+UPDATE program
+SET description = "A snobbish Wall Street commodities broker and a wily street hustler find their positions reversed as part of a bet by two callous millionaire brothers who run a brokerage house."
+WHERE program_id = 13;
+
+UPDATE program
+SET description = "After a divorced New York mother hires a nice old man to play Santa Claus at Macy's, she is startled by his claim to be the genuine article. When his sanity is questioned, a lawyer defends him in court by arguing that he's not mistaken."
+WHERE program_id = 14;
+
+UPDATE program
+SET description = "A selfish, cynical television executive is haunted by three spirits bearing lessons on Christmas Eve."
+WHERE program_id = 15;
+
+UPDATE program
+SET description = "Depressed at the commercialism he sees around him, Charlie Brown tries to find a deeper meaning to Christmas."
+WHERE program_id = 16;
+
+UPDATE program
+SET description = "When a man inadvertently makes Santa fall off his roof on Christmas Eve, he finds himself magically recruited to take his place."
+WHERE program_id = 17;
+
+UPDATE program
+SET description = "A holiday romantic comedy that captures the range of emotions tied to wanting your family's acceptance, being true to yourself, and trying not to ruin Christmas."
+WHERE program_id = 18;
+
+UPDATE program
+SET description = "In a cabin on a World War II front, a German mom with a young son mediates a truce between three German and three American soldiers so they can all celebrate Christmas Eve 1944 together."
+WHERE program_id = 19;
+
+UPDATE program
+SET description = "Follows the lives of eight very different couples in dealing with their love lives in various loosely interrelated tales all set during a frantic month before Christmas in London, England."
+WHERE program_id = 20;
+
+UPDATE program
+SET description = "A living snowman and a little girl struggle to elude a greedy magician who is after the snowman's magic hat."
+WHERE program_id = 21;
+
+UPDATE program
+SET description = "In 1980s Chicago, a 10-year-old sets out on a quest to get the Christmas gift of his generation: the latest and greatest video-game system."
+WHERE program_id = 22;
+
+UPDATE program
+SET description = "Two employees at a gift shop can barely stand each other, without realizing that they are falling in love through the post as each other's anonymous pen pal."
+WHERE program_id = 23;
+
+UPDATE program
+SET description = "On Christmas Eve, three lifelong friends spend the night in New York City looking for the Holy Grail of Christmas parties."
+WHERE program_id = 24;
+
+UPDATE program
+SET description = "Davey Stone, an alcoholic with a criminal record, is sentenced to community service under the supervision of an elderly referee. Davey is then faced with trying to reform and abandon his bad habits."
+WHERE program_id = 25;
+
+UPDATE program
+SET description = "A miserable conman and his partner pose as Santa and his Little Helper to rob department stores on Christmas Eve. But they run into problems when the conman befriends a troubled kid."
+WHERE program_id = 26;
+
+
 --Movie to Genre Pivot
 INSERT INTO program_to_genre (program_id, genre_id)
 VALUES
@@ -349,6 +459,8 @@ VALUES
 (23, 108), (23, 109), (23, 110), (23, 111), (23, 112),
 (24, 113), (24, 114), (24, 115), (24, 116), (24, 117),
 (25, 118), (25, 119), (25, 120), (25, 121), (25, 122); 
+
+
 
 
 

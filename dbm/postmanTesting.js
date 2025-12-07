@@ -118,3 +118,13 @@
 
 // It Worked!!
 
+// Update Testing PUT
+
+{
+    "title": "how the grinch stole christmas"
+}
+
+{
+    "program_type": "movie",
+    "rating": "pg"
+}

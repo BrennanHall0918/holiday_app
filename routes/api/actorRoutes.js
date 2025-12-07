@@ -16,7 +16,7 @@ router.post('/', (req, res)=> {
 router.get('/search/:column/:term', (req, res)=> {
     const { column, term } = req.params
     dao.search(res, dao.table, column, term)
-})  
+})
 
 // http://localhost:3000/api/actor/sort/${sorter}
 router.get('/sort/:sorter', (req, res)=> {
@@ -31,6 +31,11 @@ router.get('/count', (req,res)=> {
 // http://localhost:3000/api/actor/${id}
 router.get('/:id', (req, res)=> {
     dao.findById(res, dao.table, req.params.id)
+})
+
+// http://lovalhost:300/api/actor/${id}
+router.put('/:id', (req,res)=> {
+    dao.update(res, dao.table, req.body, { program_id: req.params.id})
 })
 
 module.exports = router
