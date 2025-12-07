@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000
 // Root Route => http://localhost:3000/api
 router.get('/api', (req, res)=> {
     res.json({
-        'All Movies': `http://localhost:${PORT}/api/program`,
+        'All Programs': `http://localhost:${PORT}/api/program`,
         'Actors': `http://localhost:${PORT}/api/actor`,
         'Directors': `http://localhost:${PORT}/api/director`,
         'Production Companies': `http://localhost:${PORT}/api/production`,
@@ -17,8 +17,13 @@ const endpoints = [
     'program',
     'actor',
     'director',
+    'genre',
     'production',
-    'streaming_platform'
+    'streaming_platform',
+    'program_to_actor',
+    'program_to_director',
+    'program_to_genre',
+    'program_to_streaming'
 ]
 
 endpoints.forEach(endpoint => {
