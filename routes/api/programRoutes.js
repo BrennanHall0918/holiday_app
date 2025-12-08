@@ -7,6 +7,10 @@ router.get('/', (req, res)=> {
     dao.findAll(req, res, dao.table)
 })
 
+router.get('/all', (req, res)=> {
+    dao.renderProgramCard(res, dao.table, 'programCards', 'All Programs')
+})
+
 // http://localhost:3000/api/program/findprograminfo
 router.get('/findprograminfo', (req, res)=> {
     dao.findProgramInfo(res, dao.table)
@@ -33,13 +37,13 @@ router.get('/count', (req,res)=> {
     dao.countAll(res, dao.table)
 })
 
-// http://localhost:3000/api/program/${id}
+// http://localhost:3000/api/program/id/${id}
 router.get('/:id', (req,res)=> {
     dao.findById(res, dao.table, req.params.id)
 })
 
-// http://lovalhost:300/api/program/${id}
-router.put('/:id', (req,res)=> {
+// http://lovalhost:300/api/program/id/${id}
+router.put('/id/:id', (req,res)=> {
     dao.update(res, dao.table, req.body, { program_id: req.params.id})
 })
 

@@ -38,13 +38,13 @@ router.get('/productionactivity', (req, res)=> {
     dao.productionActivity(res, dao.table)
 })
 
-// http://lovalhost:300/api/production/${id}
-router.put('/:id', (req,res)=> {
+// http://lovalhost:300/api/production/id/${id}
+router.put('/id/:id', (req,res)=> {
     dao.update(res, dao.table, req.body, { program_id: req.params.id})
 })
 
-// http://localhost:3000/api/production/${id}
-router.get('/:id', (req, res)=> {
+// http://localhost:3000/api/production/id/${id}
+router.get('/id/:id', (req, res)=> {
     dao.findById(res, dao.table, req.params.id)
 })
 

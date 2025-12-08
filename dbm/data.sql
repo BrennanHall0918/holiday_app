@@ -345,6 +345,111 @@ UPDATE program
 SET description = "A miserable conman and his partner pose as Santa and his Little Helper to rob department stores on Christmas Eve. But they run into problems when the conman befriends a troubled kid."
 WHERE program_id = 26;
 
+-- Adding Poster_URLs
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/oOleziEempUPu96jkGs0Pj6tKxj.jpg"
+WHERE program_id = 1;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/7ir0iRuPK9OEuH569cp0nF5CJce.jpg"
+WHERE program_id = 2;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/onTSipZ8R3bliBdKfPtsDuHTdlL.jpg"
+WHERE program_id = 3;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/aJCpHDC6RoGz7d1Fzayl019xnxX.jpg"
+WHERE program_id = 4;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/6m0F7fsXjQvUbCZrPWcJNrjvIui.jpg"
+WHERE program_id = 5;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/eOoCzH0MqeGr2taUZO4SwG416PF.jpg"
+WHERE program_id = 6;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/oQffRNjK8e19rF7xVYEN8ew0j7b.jpg"
+WHERE program_id = 7;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/mV3VcmMJN6Zwahj42dy9WwPUyRI.jpg"
+WHERE program_id = 8;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/xjAElUhXuc7zFJPj3qUHjcySNsE.jpg"
+WHERE program_id = 9;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/34nSHYqmb7222tiqiuKqKJmZiQa.jpg"
+WHERE program_id = 10;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/gNDykr69pEIrh66LMtOqswIpcXI.jpg"
+WHERE program_id = 11;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/cvthPydO0KhxCp1NdSCRpfOK75V.jpg"
+WHERE program_id = 12;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/A9Hk5YKUvApK5Xj4fRy93UF0n9g.jpg"
+WHERE program_id = 13;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/tZ44QFrtDjZSGjUM3VC8IEZdsyd.jpg"
+WHERE program_id = 14;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/uO0znfB2ZzTXA1IS7jkrjNbpkYK.jpg"
+WHERE program_id = 15;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/n2h4lBtZnYuRwSagKoFTSzVO9jp.jpg"
+WHERE program_id = 16;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/qLzpA23AsOTmNSKsEdPJi0atWcP.jpg"
+WHERE program_id = 17;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/vzec9kkOSE93tygyfOktedkeOQ.jpg"
+WHERE program_id = 18;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/exN9rOtB1JGBmT6d3R9aylwnHmY.jpg"
+WHERE program_id = 19;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/7QPeVsr9rcFU9Gl90yg0gTOTpVv.jpg"
+WHERE program_id = 20;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/gw7ie4W3iW8nefnZ4kuw8dgYNM2.jpg"
+WHERE program_id = 21;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/5YwaISdOwp8Zu6O7kwBeUn8a7Pu.jpg"
+WHERE program_id = 22;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/dZ1aEzGYRiqJwPfjS6VL7wUkHmF.jpg"
+WHERE program_id = 23;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/rfeNBaiMBg0UQsBQFv1qsjTjZWn.jpg"
+WHERE program_id = 24;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/5JbOweH8SQlVUfAXlihlQs42vAj.jpg"
+WHERE program_id = 25;
+
+UPDATE program
+SET poster_url = "https://www.themoviedb.org/t/p/w600_and_h900_face/rfClLIyeHqpMofmrPY8DaLe4z9x.jpg"
+WHERE program_id = 26;
+
 
 --Movie to Genre Pivot
 INSERT INTO program_to_genre (program_id, genre_id)

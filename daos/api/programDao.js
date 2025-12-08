@@ -5,6 +5,33 @@ const programDao = {
 
     table: 'program',
 
+    renderProgramCard: (res, title)=> {
+        const sql= `SELECT
+            p.program_id,
+            p.poster_url,
+            p.title,
+            p.yr_released,
+            p.runtime,
+            p.critic_score
+        FROM program p;`
+
+        con.query(
+            sql,
+            (error, rows)=> {
+            if (error) {
+                console.error(`Dao Error: ${error}`)
+                return res.status(500)
+                .send(`Database error`)
+            }
+
+            res.render('pages/programs', {
+                title: title,
+                name: 'All Programs',
+                programs: rows
+            })
+        })
+    },
+
     findProgramInfo: (res, table)=> {
 
         const sql = `SELECT

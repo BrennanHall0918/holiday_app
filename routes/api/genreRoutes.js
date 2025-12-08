@@ -38,13 +38,13 @@ router.get('/findprogramsbygenre/:id', (req,res)=> {
     dao.findProgramsByGenre(res, req.params.id)
 })
 
-// http://localhost:3000/api/genre/${id}
-router.put('/:id', (req,res)=> {
+// http://localhost:3000/api/genre/id/${id}
+router.put('/id/:id', (req,res)=> {
     dao.update(res, dao.table, req.body, { program_id: req.params.id})
 })
 
-// http://localhost:3000/api/genre/${id}
-router.get('/:id', (req, res)=> {
+// http://localhost:3000/api/genre/id/${id}
+router.get('/id/:id', (req, res)=> {
     dao.findById(res, dao.table, req.params.id)
 })
 

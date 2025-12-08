@@ -38,13 +38,13 @@ router.get('/mostprolific', (req, res)=> {
     dao.mostProlific(res, dao.table)
 })
 
-// http://localhost:3000/api/actor/${id}
-router.put('/:id', (req,res)=> {
+// http://localhost:3000/api/actor/id/${id}
+router.put('/id/:id', (req,res)=> {
     dao.update(res, dao.table, req.body, { program_id: req.params.id})
 })
 
-// http://localhost:3000/api/actor/${id}
-router.get('/:id', (req, res)=> {
+// http://localhost:3000/api/actor/id/${id}
+router.get('/id/:id', (req, res)=> {
     dao.findById(res, dao.table, req.params.id)
 })
 

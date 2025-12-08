@@ -8,6 +8,10 @@ const PORT = process.env.PORT || 3000
 const helmet = require('helmet')
 const cors = require('cors')
 
+// Capitalize Movie Titles
+const titleCase = require('./helpers/titleCase')
+server.locals.titleCase = titleCase
+
 // Helmet Config
 server.use(helmet.contentSecurityPolicy({
     useDefaults: true,

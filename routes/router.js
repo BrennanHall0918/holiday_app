@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const PORT = process.env.PORT || 3000
+const programDao = require('../daos/api/programDao')
 
 // Home Page => http://localhost:3000
 router.get('/', (req, res)=> {
@@ -8,6 +9,11 @@ router.get('/', (req, res)=> {
         title: "Holiday App Home",
         name: "Brennan's Holiday App!"
     })
+})
+
+// All Programs Page => http://localhost:3000/programs
+router.get('/programs', (req, res)=> {
+    programDao.renderProgramCard(res, programDao.table, 'programs', 'All Programs')
 })
 
 // Actor Form => http:/localhost:3000/actor_form
@@ -50,7 +56,6 @@ endpoints.forEach(endpoint => {
 //Error Page
 router.use((req, res, next)=> {
     res.status(404)
-    // .send('<h1>404 Error: This page does not exist.</h1>')
     .render('pages/error', {
         title: "Error Page",
         name: "Error"

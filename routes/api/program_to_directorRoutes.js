@@ -12,8 +12,8 @@ router.post('/', (req, res)=> {
     dao.create(res, dao.table, req.body)
 })
 
-// http://localhost:3000/api/program_to_director/${id}
-router.get('/:id', (req,res)=> {
+// http://localhost:3000/api/program_to_director/id/${id}
+router.get('/id/:id', (req,res)=> {
     dao.findById(res, dao.table, req.params.id)
 })
 

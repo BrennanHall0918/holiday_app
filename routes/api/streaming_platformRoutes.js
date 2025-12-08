@@ -38,13 +38,13 @@ router.get('/platformuseagestats', (req,res)=> {
     dao.platformUsageStats(res, dao.table)
 })
 
-// http://localhost:3000/api/streaming_platform/${id}
+// http://localhost:3000/api/streaming_platform/id/${id}
 router.put('/:id', (req,res)=> {
     dao.update(res, dao.table, req.body, { program_id: req.params.id})
 })
 
-// http://localhost:3000/api/streaming_platform/${id}
-router.get('/:id', (req, res)=> {
+// http://localhost:3000/api/streaming_platform/id/${id}
+router.get('/id/:id', (req, res)=> {
     dao.findById(res, dao.table, req.params.id)
 })
 

@@ -33,13 +33,13 @@ router.get('/directed/:id', (req, res)=> {
     dao.directed(res, req.params.id, dao.table)
 })
 
-// http://lovalhost:300/api/director/${id}
-router.put('/:id', (req,res)=> {
+// http://lovalhost:300/api/director/id/${id}
+router.put('/id/:id', (req,res)=> {
     dao.update(res, dao.table, req.body, { program_id: req.params.id})
 })
 
-// http://localhost:3000/api/director/${id}
-router.get('/:id', (req, res)=> {
+// http://localhost:3000/api/director/id/${id}
+router.get('/id/:id', (req, res)=> {
     dao.findById(res, dao.table, req.params.id)
 })
 

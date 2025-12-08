@@ -68,6 +68,15 @@ ON p.program_id = pg.program_id
 WHERE pg.genre_id = ?
 ORDER BY p.title;
 
+-- Render Program Card Query
+SELECT
+    p.poster_url,
+    p.title,
+    p.yr_released,
+    p.runtime,
+    p.critic_score
+FROM program p;
+
 -- Appears In (Actor)
 SELECT
     p.program_id,
