@@ -33,6 +33,7 @@ router.get('/mostused', (req,res)=> {
     dao.mostUsed(res, dao.table)
 })
 
+// http://localhost:3000/api/genre/findprogramsbygenre/${id}
 router.get('/findprogramsbygenre/:id', (req,res)=> {
     dao.findProgramsByGenre(res, req.params.id)
 })

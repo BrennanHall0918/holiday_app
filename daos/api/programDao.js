@@ -65,7 +65,7 @@ const programDao = {
         )
     },
 
-    filterByGrenre: (res, table, id)=> {
+    filterByGenre: (res, table, id)=> {
         const sql = `SELECT 
             p.title,
             p.yr_released,
