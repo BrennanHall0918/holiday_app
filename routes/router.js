@@ -2,11 +2,19 @@ const express = require('express')
 const router = express.Router()
 const PORT = process.env.PORT || 3000
 
-// Home Page => http://3000
+// Home Page => http://localhost:3000
 router.get('/', (req, res)=> {
     res.render('pages/home', {
         title: "Holiday App Home",
         name: "Brennan's Holiday App!"
+    })
+})
+
+// Actor Form => http:/localhost:3000/actor_form
+router.get('/actor_form', (req,res)=> {
+    res.render('pages/actor_form', {
+        title: "actor form",
+        name: "actor_form"
     })
 })
 

@@ -7,8 +7,8 @@ router.get('/', (req, res)=> {
     dao.findAll(req, res, dao.table)
 })
 
-// http://localhost:3000/api/actor
-router.post('/', (req, res)=> {
+// http://localhost:3000/api/actor/create
+router.post('/create', (req, res)=> {
     dao.create(res, dao.table, req.body)
 })
 
