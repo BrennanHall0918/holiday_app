@@ -2,6 +2,14 @@ const express = require('express')
 const router = express.Router()
 const PORT = process.env.PORT || 3000
 
+// Home Page => http://3000
+router.get('/', (req, res)=> {
+    res.render('pages/home', {
+        title: "Holiday App Home",
+        name: "Brennan's Holiday App!"
+    })
+})
+
 // Root Route => http://localhost:3000/api
 router.get('/api', (req, res)=> {
     res.json({
@@ -34,7 +42,11 @@ endpoints.forEach(endpoint => {
 //Error Page
 router.use((req, res, next)=> {
     res.status(404)
-    .send('<h1>404 Error: This page does not exist.</h1>')
+    // .send('<h1>404 Error: This page does not exist.</h1>')
+    .render('pages/error', {
+        title: "Error Page",
+        name: "Error"
+    })
 })
 
 module.exports = router
