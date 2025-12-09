@@ -11,16 +11,19 @@
                 <h1 class="mb-3"><%= titleCase(program.title) %></h1>
                 <p><strong>Rating:</strong> <%= titleCase(program.rating) %></p>
                 <p><strong>Runtime:</strong> <%= program.runtime %> minutes</p>
-                <p><strong>Nationality:</strong> <%= program.nationality %></p>
                 <p><strong>Year Released:</strong> <%= program.yr_released %></p>
-                <p><strong>Critic Score:</strong> <%= program.critic_score %>/10</p>
-                <p><strong>Production Company:</strong> <%= program.production_company %></p>
                 <p><strong>Genres:</strong> <%= program.genres %></p>
                 <p><strong>Directors:</strong> <%= program.directors %></p>
                 <p><strong>Actors:</strong> <%= program.actors %></p>
+                <p><strong>Production Company:</strong> <%= program.production_company %></p>
+                <p><strong>Nationality:</strong> <%= program.nationality %></p>
+                <p><strong>Critic Score:</strong> <%= program.critic_score %>/10</p>
                 <hr>
                 <h5>Description:</h5>
                 <p><%= program.description %></p>
+                <hr>
+                <h5>Streaming Platforms:</h5>
+                <p><%= program.streaming_platforms %></p>
             </div>
         </div>
 
