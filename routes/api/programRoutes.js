@@ -7,9 +7,16 @@ router.get('/', (req, res)=> {
     dao.findAll(req, res, dao.table)
 })
 
+// http://localhost:3000/api/program/all
 router.get('/all', (req, res)=> {
-    dao.renderProgramCard(res, dao.table, 'programCards', 'All Programs')
+    dao.renderProgramCard(res)
 })
+
+// http://localhost:3000/api/program/id/:id
+router.get('/id/:id', (req, res)=> {
+    dao.renderSingleMovie(res,req.params.id)
+})
+
 
 // http://localhost:3000/api/program/findprograminfo
 router.get('/findprograminfo', (req, res)=> {

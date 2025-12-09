@@ -16,6 +16,11 @@ router.get('/programs', (req, res)=> {
     programDao.renderProgramCard(res, programDao.table, 'programs', 'All Programs')
 })
 
+// Single Program Page => http://localhost:3000/programs/id
+router.get('/programs/id/:id', (req, res)=> {
+    programDao.renderSingleMovie(res, req.params.id)
+})
+
 // Actor Form => http:/localhost:3000/actor_form
 router.get('/actor_form', (req,res)=> {
     res.render('pages/actor_form', {
