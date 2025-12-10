@@ -1,13 +1,43 @@
 <%- include('../partials/header') %>
-    <main class="main" id="main">
-        <div class="container">
-            <h2>main</h2>
-            <nav style="background:#222; padding:15px">
-                <ul style="display:flex; gap:20px; list-style:none; margin:0; padding:0;">
-                    <li><a href="/programs" style="color:#fff; text-decoration:none;">All Programs</a></li>  
-                    <li><a href="/actors" style="color:#fff; text-decoration:none;">Actors</a></li>
-                </ul>
-            </nav>
+    <main id="main" class="py-5" style="background:#FAF8F8;">
+    <div class="container text-center">
+
+        <h1 class="mb-4" style="color:#006F57; font-weight:700;">
+             Holiday Program Database 
+        </h1>
+
+        <p class="lead mb-5" style="color:#23856D;">
+            Browse programs, add actors, or add your favorite holiday program.
+        </p>
+
+
+        <div class="card mx-auto shadow" style="max-width:600px; border:2px solid #006F57;">
+            <div class="card-body" style="background:#FFFFFF;">
+
+                <h4 class="mb-3" style="color:#006F57;">Navigation</h4>
+
+                <div class="d-flex flex-column gap-3">
+
+                    <a href="/programs" 
+                       class="btn btn-lg btn-holiday-green">
+                        View All Programs
+                    </a>
+
+                    <a href="/actor_form" 
+                       class="btn btn-lg btn-holiday-red">
+                        Add an Actor
+                    </a>
+
+                    <a href="/program/new" 
+                       class="btn btn-lg btn-holiday-teal">
+                        Add a Program
+                    </a>
+
+                </div>
+
+            </div>
         </div>
-    </main>
+
+    </div>
+</main>
 <%- include('../partials/footer') %>

@@ -2,6 +2,7 @@
 const express = require('express')
 const server = express()
 const router = require('./routes/router')
+server.use(express.static('public'))
 const PORT = process.env.PORT || 3000
 
 // Security
@@ -18,7 +19,7 @@ server.use(helmet.contentSecurityPolicy({
     crossOriginResourcePolicy: false,
     crossOriginEmbedderPolicy: false,
     directives: {
-        "img-src": ["'self'", "https: data"],
+        "img-src": ["'self'", "https:", "data:"],
         "scriptSrc": ["'self'", "cdn.jsdelivr.net"]
     }
 }))

@@ -1,0 +1,38 @@
+/* Colors I like:
+Brick Ember (Darker Red): #BB010B
+Flag Red (Brighter Red): #CD1624
+Blue Spruce (Darker Green): #006F57
+Jungle Teal (lighter Green): #23856D
+Bright Snow (White): #FAF8F8
+*/
+
+
+.btn-holiday-green {
+    background: #006F57;
+    color: #FAF8F8;
+    font-weight: bold;
+}
+.btn-holiday-green:hover {
+    background: #006F00;
+    color: #ffffff;
+}
+
+.btn-holiday-red {
+    background: #CD1624;
+    color: #FAF8F8;
+    font-weight: bold;
+}
+.btn-holiday-red:hover {
+    background: #a1121d;
+    color: #ffffff;
+}
+
+.btn-holiday-teal {
+    background: #23856D;
+    color: #FAF8F8;
+    font-weight: bold;
+}
+.btn-holiday-teal:hover {
+    background: #1c6a57;
+    color: #ffffff;
+}
