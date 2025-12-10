@@ -1,36 +1,35 @@
 <%- include('../partials/header') %>
 
-<main class="main py-5">
+<main class="main py-5" style="background:#FAF8F8;">
     <div class="container">
-        <h1 class="text-center mb-4"><%= title %></h1>
 
-        <div class="row">
+        <div class="row g-4">
             <% programs.forEach(program => { %>
-                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <img 
-                        src="<%= program.poster_url %>" 
-                        class="card-img-top" 
-                        alt="<%= program.title %> Poster" 
-                        style="height: 350px; object-fit: cover;">
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 card-thick-border shadow-sm card-hover">
+                        <img src="<%= program.poster_url %>" 
+                             class="card-img-top" 
+                             alt="<%= program.title %> Poster" 
+                             style="height: 350px; object-fit: contain; background-color: #23856D;">
+                        <div class="card-body d-flex flex-column" style="background:#23856D;">
+                            <h5 class="card-title" style="color:#ffffff;"><%= titleCase(program.title) %></h5>
 
-                        <div class="card-body d-flex flex-column">  
-                            <h5 class="card-title"><%= titleCase(program.title) %></h5>
-
-                            <p class="card-text mb-1"><strong>Year:</strong> <%= program.yr_released %></p>
-                            <p class="card-text mb-1"><strong>Runtime:</strong> <%= program.runtime %> </p>
-                            <p class="card-text mb-1"><strong>Critic Score:</strong> <%= program.critic_score %>/10</p>
+                            <ul class="list-unstyled mb-3" style="color:#ffffff;">
+                                <li><strong>Year:</strong> <%= program.yr_released %></li>
+                                <li><strong>Runtime:</strong> <%= program.runtime %></li>
+                                <li><strong>Rating:</strong> <%= titleCase(program.rating) %></li>
+                            </ul>
 
                             <a href="/programs/id/<%= program.program_id %>" 
-                            class="btn btn-primary mt-auto">View Details</a>
+                               class="btn btn-holiday-red mt-auto">View Details</a>
                         </div>
                     </div>
                 </div>
             <% }) %>
         </div>
 
-        <div class="text-center mt-4">
-            <a href="/" class="btn btn-secondary">Back to Home</a>
+        <div class="text-center mt-5">
+            <a href="/" class="btn btn-holiday-red btn-lg">Back to Home</a>
         </div>
 
     </div>

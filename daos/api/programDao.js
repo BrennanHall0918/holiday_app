@@ -13,7 +13,7 @@ const programDao = {
             p.title,
             p.yr_released,
             p.runtime,
-            p.critic_score
+            p.rating
         FROM program p;`
 
         con.query(sql,

@@ -1,37 +1,39 @@
 <%- include('../partials/header') %>
 
-<main class="main py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <img src="<%= program.poster_url %>" alt="<%= titleCase(program.title) %> Poster" class="img-fluid rounded shadow">
-            </div>
-
-            <div class="col-md-8">
-                <h1 class="mb-3"><%= titleCase(program.title) %></h1>
-                <p><strong>Rating:</strong> <%= titleCase(program.rating) %></p>
-                <p><strong>Runtime:</strong> <%= program.runtime %> minutes</p>
-                <p><strong>Year Released:</strong> <%= program.yr_released %></p>
-                <p><strong>Genres:</strong> <%= program.genres %></p>
-                <p><strong>Directors:</strong> <%= program.directors %></p>
-                <p><strong>Actors:</strong> <%= program.actors %></p>
-                <p><strong>Production Company:</strong> <%= program.production_company %></p>
-                <p><strong>Nationality:</strong> <%= program.nationality %></p>
-                <p><strong>Critic Score:</strong> <%= program.critic_score %>/10</p>
-                <hr>
-                <h5>Description:</h5>
-                <p><%= program.description %></p>
-                <hr>
-                <h5>Streaming Platforms:</h5>
-                <p><%= program.streaming_platforms %></p>
-            </div>
+<div class="card shadow-lg p-4 mb-4">
+    <div class="row g-4">
+        <div class="col-md-4 text-center">
+            <img src="<%= program.poster_url %>" alt="<%= titleCase(program.title) %> Poster" class="img-fluid rounded shadow">
         </div>
 
-        <div class="mt-4">
-            <a href="/programs" class="btn btn-secondary">Back to All Programs</a>
-        </div>
+        <div class="col-md-8">
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <p><strong>Rating:</strong> <%= titleCase(program.rating) %></p>
+                    <p><strong>Runtime:</strong> <%= program.runtime %></p>
+                    <p><strong>Year Released:</strong> <%= program.yr_released %></p>
+                    <p><strong>Nationality:</strong> <%= program.nationality %></p>
+                    <p><strong>Genres:</strong> <%= program.genres %></p>
+                    <p><strong>Directors:</strong> <%= program.directors %></p>
+                    <p><strong>Actors:</strong> <%= program.actors %></p>
+                    <p><strong>Production Company:</strong> <%= program.production_company %></p>
+                    <p><strong>Critic Score:</strong> <%= program.critic_score %>/10</p>
+                </div>
+            </div>
 
+            <hr>
+            <h5>Description:</h5>
+            <p><%= program.description %></p>
+
+            <hr>
+            <h5>Streaming Platforms:</h5>
+            <p><%= program.streaming_platforms %></p>
+
+            <div class="mt-4">
+                <a href="/programs" class="btn btn-holiday-red">Back to All Programs</a>
+            </div>
+        </div>
     </div>
-</main>
+</div>
 
 <%- include('../partials/footer') %>

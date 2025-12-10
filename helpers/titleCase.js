@@ -1,7 +1,7 @@
 module.exports = function (str) {
     if(!str) return "";
 
-    const keepLower = ["a","an", "and", "at", "the"]
+    const keepLower = ["a","an", "and", "at", "the", "or"]
 
     return str
         .toLowerCase()

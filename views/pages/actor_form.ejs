@@ -1,42 +1,52 @@
 <%- include('../partials/header') %>
 
-<main class="main" id="main">
+<main class="main py-5" style="background-color: #FAF8F8;">
     <div class="container">
-        <h2 class="text-center text-capitalize">Add an actor</h2>
-        <form 
-        action="http://localhost:3000/api/actor/create" 
-        method="post"
-        class="form" 
-        id="actorForm">
-        <div class="row mb-3">
-            <div class="col">
-                <label for="first_name" class="form-label">
-                    First name:
-                </label>
-                <input 
-                type="text"
-                id="first_name"
-                name="first_name"
-                class="form_control">
-            </div>
-            <div class="row mb-3">
-            <div class="col">
-                <label for="last_name" class="form-label">
-                    Last name:
-                </label>
-                <input 
-                type="text"
-                id="last_name"
-                name="last_name"
-                class="form_control">
+        <h2 class="text-center mb-4" style="color: #006F57;">Add a New Actor</h2>
+        <div class="card mx-auto shadow" style="max-width: 600px; border: 2px solid #006F57;">
+            <div class="card-body" style="background-color: #ffffff;">
+                <form 
+                    action="http://localhost:3000/api/actor/create" 
+                    method="post"
+                    id="actorForm">
+
+                    <div class="mb-3">
+                        <label for="first_name" class="form-label fw-bold">First Name:</label>
+                        <input 
+                            type="text" 
+                            id="first_name" 
+                            name="first_name" 
+                            class="form-control" 
+                            placeholder="Enter first name" 
+                            required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="last_name" class="form-label fw-bold">Last Name:</label>
+                        <input 
+                            type="text" 
+                            id="last_name" 
+                            name="last_name" 
+                            class="form-control" 
+                            placeholder="Enter last name" 
+                            required>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button 
+                            type="submit" 
+                            class="btn btn-holiday-green" >
+                            Add Actor
+                        </button>
+                    </div>
+
+                </form>
+                <div class="text-center mt-3">
+                    <a href="/" class="btn btn-holiday-red">Back to Home</a>
+                </div>
+
             </div>
         </div>
-        <button 
-            class="btn btn-primary"
-            type="submit"
-            role="button"
-        >Add Actor</button>
-    </form>
     </div>
 </main>
 
