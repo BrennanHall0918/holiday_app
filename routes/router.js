@@ -11,12 +11,13 @@ router.get('/', (req, res)=> {
     })
 })
 
-// All Programs Page => http://localhost:3000/programs
+// All Programs Page => http://localhost:3000/program
 router.get('/programs', (req, res)=> {
-    programDao.renderProgramCard(res, programDao.table, 'programs', 'All Programs')
+    programDao.renderProgramCard(res, "title"
+    )
 })
 
-// Single Program Page => http://localhost:3000/programs/id
+// Single Program Page => http://localhost:3000/program/id
 router.get('/programs/id/:id', (req, res)=> {
     programDao.renderSingleMovie(res, req.params.id)
 })
@@ -26,6 +27,14 @@ router.get('/actor_form', (req,res)=> {
     res.render('pages/actor_form', {
         title: "actor form",
         name: "actor_form"
+    })
+})
+
+// Program Form => http://localhost:3000/program/new
+router.get('/program/new', (req, res)=> {
+    res.render('pages/program_form', {
+        title: "program form",
+        name: "program_form"
     })
 })
 
@@ -40,6 +49,7 @@ router.get('/api', (req, res)=> {
         'Genres': `http://localhost:${PORT}/api/genre`
     })
 })
+
 
 const endpoints = [
     'program',

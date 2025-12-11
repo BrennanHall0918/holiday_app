@@ -1,22 +1,26 @@
 const express = require ('express')
 const router = express.Router()
-const { programDao: dao } = require('../../daos/dao')
+const { programDao: dao, programDao } = require('../../daos/dao')
+
+// http://localhost:3000/programs
+router.get('/', (req, res)=> {
+    dao.renderProgramCard(res)
+})
+
+// http://localhost:3000/program/id/:id
+router.get('/id/:id', (req, res)=> {
+    dao.renderSingleMovie(res,req.params.id)
+})
+
+// http://localhost:3000/api/program/add
+router.post('/add', (req, res)=> {
+    programDao.createFullProgram(req, res)
+})
 
 // http://localhost:3000/api/program
 router.get('/', (req, res)=> {
     dao.findAll(req, res, dao.table)
 })
-
-// http://localhost:3000/api/program/all
-router.get('/all', (req, res)=> {
-    dao.renderProgramCard(res)
-})
-
-// http://localhost:3000/api/program/id/:id
-router.get('/id/:id', (req, res)=> {
-    dao.renderSingleMovie(res,req.params.id)
-})
-
 
 // http://localhost:3000/api/program/findprograminfo
 router.get('/findprograminfo', (req, res)=> {
@@ -56,7 +60,7 @@ router.put('/id/:id', (req,res)=> {
 
 // http://localhost:3000/api/program/filterbygenre/${genre_id}
 router.get('/filterbygenre/:id', (req, res)=> {
-    dao.filterByGrenre(res, dao.table, req.params.id)
+    dao.filterByGenre(res, dao.table, req.params.id)
 })
 
 module.exports = router

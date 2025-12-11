@@ -57,9 +57,10 @@ CREATE TABLE program (
     poster_url VARCHAR(255),
     format ENUM('live-action', 'animation', 'stop-motion') DEFAULT 'live-action',
     critic_score VARCHAR(5) NOT NULL,
-    decription TEXT,
+    description TEXT,
     date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     last_update TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    inactive TINYINT NOT NULL DEFAULT 0,
     CONSTRAINT pk_movie PRIMARY KEY (program_id),
     CONSTRAINT fk_production FOREIGN KEY (production_id) REFERENCES production (production_id)
 );
@@ -92,4 +93,6 @@ CREATE TABLE program_to_director (
     CONSTRAINT fk_dir_mov FOREIGN KEY (director_id) REFERENCES director (director_id)
 );
 
-
+-- Adding inactive tag for testing
+ALTER TABLE program
+ADD COLUMN inactive TINYINT NOT NULL DEFAULT 0;

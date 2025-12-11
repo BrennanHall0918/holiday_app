@@ -79,24 +79,34 @@ SELECT
         ORDER BY sp.streaming_platform SEPARATOR ', ') AS streaming_platforms
 
 FROM program p
+
 LEFT JOIN production pr
     ON p.production_id = pr.production_id
+
 LEFT JOIN program_to_actor pa
     ON p.program_id = pa.program_id
+
 LEFT JOIN actor a
     ON pa.actor_id = a.actor_id
+
 LEFT JOIN program_to_director pd
     ON p.program_id = pd.program_id
+
 LEFT JOIN director d
     ON pd.director_id = d.director_id
+
 LEFT JOIN program_to_genre pg
     ON p.program_id = pg.program_id
+
 LEFT JOIN genre g
     ON pg.genre_id = g.genre_id
+
 LEFT JOIN program_to_streaming ps
     ON p.program_id = ps.program_id
+
 LEFT JOIN streaming_platform sp
     ON ps.streaming_platform_id = sp.streaming_platform_id
+
 WHERE p.program_id = 1
 GROUP BY p.program_id;
 
@@ -131,107 +141,107 @@ WHERE pa.actor_id = ?
 ORDER BY p.title;
 
 -- Most Prolific (Actor)
-    SELECT
-        COUNT(pa.actor_id) AS movie_count, 
-        a.first_name,
-        a.last_name
-    FROM actor a
-    INNER JOIN program_to_actor pa
-    ON a.actor_id = pa.actor_id
-    GROUP BY a.first_name, a.last_name
-    ORDER BY movie_count, a.last_name;
+SELECT
+    COUNT(pa.actor_id) AS movie_count, 
+    a.first_name,
+    a.last_name
+FROM actor a
+INNER JOIN program_to_actor pa
+ON a.actor_id = pa.actor_id
+GROUP BY a.first_name, a.last_name
+ORDER BY movie_count, a.last_name;
 
 -- Directed (Director)
-    SELECT
-        p.title,
-        d.first_name,
-        d.last_name
-    FROM director d
-    INNER JOIN program_to_director pd
-    ON d.director_id = pd.program_id
-    INNER JOIN program p
-    ON p.program_id = pd.program_id
-    WHERE d.director_id = ?
-    ORDER BY p.title;
+SELECT
+    p.title,
+    d.first_name,
+    d.last_name
+FROM director d
+INNER JOIN program_to_director pd
+ON d.director_id = pd.program_id
+INNER JOIN program p
+ON p.program_id = pd.program_id
+WHERE d.director_id = ?
+ORDER BY p.title;
 
 -- Favorite Genre (Director)
-    SELECT
-        COUNT(pg.program_id) AS genre_count,
-        d.first_name,
-        d.last_name
-    FROM director d
-    INNER JOIN program_to_director pd
-    ON d.director_id = pd.program_id
-    INNER JOIN program_to_genre pg
-    ON pd.program_id = pg.program_id
-    WHERE d.director_id = 1
-    ORDER BY genre_count DESC;
+SELECT
+    COUNT(pg.program_id) AS genre_count,
+    d.first_name,
+    d.last_name
+FROM director d
+INNER JOIN program_to_director pd
+ON d.director_id = pd.program_id
+INNER JOIN program_to_genre pg
+ON pd.program_id = pg.program_id
+WHERE d.director_id = 1
+ORDER BY genre_count DESC;
 
 -- Most Used (Genre)
-    SELECT
-        COUNT(pg.genre_id) AS most_used,
-        g.genre
-    FROM genre g
-    INNER JOIN program_to_genre pg
-    ON g.genre_id = pg.genre_id
-    GROUP BY g.genre
-    ORDER BY most_used DESC;
+SELECT
+    COUNT(pg.genre_id) AS most_used,
+    g.genre
+FROM genre g
+INNER JOIN program_to_genre pg
+ON g.genre_id = pg.genre_id
+GROUP BY g.genre
+ORDER BY most_used DESC;
 
 -- Find Program By Genre (Genre)
-    SELECT 
-        p.title,
-        p.rating,
-        p.runtime,
-        p.yr_released
-    FROM program p
-    LEFT JOIN program_to_genre pg
-    ON p.program_id = pg.program_id
-    WHERE pg.genre_id = ?;
+SELECT 
+    p.title,
+    p.rating,
+    p.runtime,
+    p.yr_released
+FROM program p
+LEFT JOIN program_to_genre pg
+ON p.program_id = pg.program_id
+WHERE pg.genre_id = ?;
 
 -- Find Program By Production (Production)
-    SELECT
-        pr.production,
-        p.title,
-        p.rating,
-        p.runtime,
-        p.yr_released
-    FROM program p
-    INNER JOIN production pr
-    ON p.production_id = pr.production_id
-    WHERE pr.production_id = ?;
+SELECT
+    pr.production,
+    p.title,
+    p.rating,
+    p.runtime,
+    p.yr_released
+FROM program p
+INNER JOIN production pr
+ON p.production_id = pr.production_id
+WHERE pr.production_id = ?;
 
 --Production Movies Made (Production)
-    SELECT
-        COUNT(p.program_id) AS total_programs,
-        pr.production_id,
-        pr.production AS production_company
-    FROM production pr
-    LEFT JOIN program p
-    ON pr.production_id = p.production_id
-    GROUP BY pr.production_id
-    ORDER BY total_programs DESC; 
+SELECT
+    COUNT(p.program_id) AS total_programs,
+    pr.production_id,
+    pr.production AS production_company
+FROM production pr
+LEFT JOIN program p
+ON pr.production_id = p.production_id
+GROUP BY pr.production_id
+ORDER BY total_programs DESC; 
 
 --Find Programs on Sreaming Platforms (Streaming)
-    SELECT
-        p.title,
-        p.rating,
-        p.runtime,
-        p.yr_released
-    FROM program p
-    INNER JOIN program_to_streaming ps
-    ON p.program_id = ps.program_id
-    WHERE ps.streaming_platform_id = ?;
+SELECT
+    p.title,
+    p.rating,
+    p.runtime,
+    p.yr_released
+FROM program p
+INNER JOIN program_to_streaming ps
+ON p.program_id = ps.program_id
+WHERE ps.streaming_platform_id = ?;
 
 --Find Platform Usage Stats (Streaming)
-    SELECT
-        COUNT(ps.program_id) AS total_programs,
-        s.streaming_platform_id,
-        s.streaming_platform
-    FROM streaming_platform s
-    LEFT JOIN program_to_streaming ps
-    ON s.streaming_platform_id = ps.streaming_platform_id
-    GROUP BY s.streaming_platform_id
-    ORDER BY total_programs DESC;
+SELECT
+    COUNT(ps.program_id) AS total_programs,
+    s.streaming_platform_id,
+    s.streaming_platform
+FROM streaming_platform s
+LEFT JOIN program_to_streaming ps
+ON s.streaming_platform_id = ps.streaming_platform_id
+GROUP BY s.streaming_platform_id
+ORDER BY total_programs DESC;
 
 
 

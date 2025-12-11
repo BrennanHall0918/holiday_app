@@ -1,0 +1,149 @@
+<%- include('../partials/header') %>
+
+
+<main class="main py-5" style="background-color: #FAF8F8;">
+    <div class="container">
+        <h2 class="text-center mb-4" style="color: #006F57;">Add a New Program</h2>
+        <div class="card mx-auto shadow" style="max-width: 800px; border: 2px solid #006F57;">
+            <div class="card-body" style="background-color: #ffffff;">
+                <form action="http://localhost:3000/api/program/add" method="post" id="programForm">
+
+                    <div class="mb-3">
+                        <label for="title" class="form-label fw-bold">Title:</label>
+                        <input type="text" name="title" id="title" class="form-control" placeholder="Program title" required>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="program_type" class="form-label fw-bold">Type:</label>
+                            <select name="program_type" id="program_type" class="form-select">
+                                <option value="movie">movie</option>
+                                <option value="tv">tv</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="rating" class="form-label fw-bold">Rating:</label>
+                            <input type="text" name="rating" id="rating" class="form-control" placeholder="PG, R, etc." required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="runtime" class="form-label fw-bold">Runtime (00:00:00):</label>
+                            <input type="text" name="runtime" id="runtime" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label for="yr_released" class="form-label fw-bold">Year Released:</label>
+                            <input type="text" name="yr_released" id="yr_released" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="nationality" class="form-label fw-bold">Nationality:</label>
+                            <input type="text" name="nationality" id="nationality" class="form-control" placeholder="USA">
+                        </div>
+                        <div class="col">
+                            <label for="production" class="form-label fw-bold">Production Company:</label>
+                            <input type="text" name="production" id="production" class="form-control" placeholder="Production Name">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="showing" class="form-label fw-bold">Showing:</label>
+                            <select name="showing" id="showing" class="form-select">
+                                <option value="theater">theater</option>
+                                <option value="direct-to-tv">direct-to-tv</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="format" class="form-label fw-bold">Format:</label>
+                            <select name="format" id="format" class="form-select">
+                                <option value="live-action">live-action</option>
+                                <option value="animation">animation</option>
+                                <option value="stop-motion">stop-motion</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="poster_url" class="form-label fw-bold">Poster URL:</label>
+                        <input type="text" name="poster_url" id="poster_url" class="form-control" placeholder="http://example.com/poster.jpg">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="critic_score" class="form-label fw-bold">Critic Score (out of 10):</label>
+                        <input type="text" name="critic_score" id="critic_score" class="form-control" placeholder="x.x">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label fw-bold">Description:</label>
+                        <textarea name="description" id="description" class="form-control" rows="3"></textarea>
+                    </div>
+
+                    <hr>
+                    <hr>
+
+                    <h5 class="mt-4">Actors:</h5>
+                    <% for(let i=1; i<=5; i++) { %>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label class="form-label fw-bold">First Name:</label>
+                            <input type="text" name="actors[<%= i %>][first_name]" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label class="form-label fw-bold">Last Name:</label>
+                            <input type="text" name="actors[<%= i %>][last_name]" class="form-control">
+                        </div>
+                    </div>
+                    <% } %>
+
+                    <hr>
+
+                    <h5 class="mt-4">Directors:</h5>
+                    <% for(let i=1; i<=2; i++) { %>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label class="form-label fw-bold">First Name:</label>
+                            <input type="text" name="directors[<%= i %>][first_name]" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label class="form-label fw-bold">Last Name:</label>
+                            <input type="text" name="directors[<%= i %>][last_name]" class="form-control">
+                        </div>
+                    </div>
+                    <% } %>
+
+                    <hr>
+
+                    <h5 class="mt-4">Genres:</h5>
+                    <% for(let i=1; i<=3; i++) { %>
+                    <div class="mb-3">
+                        <input type="text" name="genres[<%= i %>]" class="form-control">
+                    </div>
+                    <% } %>
+
+                    <hr>
+
+                    <h5 class="mt-4">Streaming Platforms:</h5>
+                    <% for(let i=1; i<=3; i++) { %>
+                    <div class="mb-3">
+                        <input type="text" name="streaming[<%= i %>]" class="form-control">
+                    </div>
+                    <% } %>
+
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-holiday-green">Add Program</button>
+                    </div>
+
+                </form>
+                <div class="text-center mt-3">
+                    <a href="/" class="btn btn-holiday-red">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<%- include('../partials/footer') %>

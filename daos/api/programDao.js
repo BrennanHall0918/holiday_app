@@ -1,6 +1,8 @@
 const { render } = require('ejs')
 const con = require ('../../config/dbconfig')
 const { queryAction } = require('../../helpers/queryAction')
+const { insertIntoPivot } = require('../../helpers/insertIntoPivot')
+const findOrCreate = require('../../helpers/findOrCreate_Functions')
 
 const programDao = {
 
@@ -14,7 +16,8 @@ const programDao = {
             p.yr_released,
             p.runtime,
             p.rating
-        FROM program p;`
+        FROM program p
+        WHERE p.inactive = 0;`
 
         con.query(sql,
             (error, rows)=> {
@@ -76,7 +79,7 @@ const programDao = {
             ON p.program_id = ps.program_id
         LEFT JOIN streaming_platform sp
             ON ps.streaming_platform_id = sp.streaming_platform_id
-        WHERE p.program_id = ?
+        WHERE p.program_id = ? AND inactive = 0
         GROUP BY p.program_id;`
 
         con.query(
@@ -109,6 +112,145 @@ const programDao = {
 
         
     },
+
+    createFullProgram: (req, res)=> {
+
+    const data = req.body
+
+    const {
+        title,
+        program_type,
+        rating,
+        runtime,
+        nationality,
+        yr_released,
+        production,
+        showing,
+        poster_url,
+        format,
+        critic_score,
+        description,
+        actors,    
+        genres,     
+        streaming,  
+        directors   
+    } = data;
+
+    findOrCreate.findOrCreateProduction(
+        production,
+        res,
+        (error, production_id)=> {
+            if (error)
+                return res.send(error)
+
+            const sqlProgram = `
+                INSERT INTO program 
+                (title, 
+                program_type, 
+                rating, 
+                runtime, 
+                nationality, 
+                yr_released, 
+                production_id, 
+                showing, 
+                poster_url, 
+                format, 
+                critic_score, 
+                description)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`
+
+            const values = [
+                title,
+                program_type,
+                rating, 
+                runtime, 
+                nationality, 
+                yr_released,
+                production_id, 
+                showing, 
+                poster_url, 
+                format, 
+                critic_score, 
+                description
+            ];
+
+            con.query(
+                sqlProgram,
+                values,
+                (error, result)=> {
+                    if (error)
+                        return res.send(error)
+
+                    const program_id = result.insertId
+
+                    actors.forEach(actor=> {
+                        findOrCreate.findOrCreateActor(
+                            actor.first_name,
+                            actor.last_name,
+                            res,
+                            (error, actor_id)=> {
+                                if (!error && actor_id) {
+                                    con.query(
+                                        `INSERT INTO program_to_actor (program_id, actor_id) VALUES (?, ?);`,
+                                        [program_id, actor_id]
+                                    )
+                                }
+                            }
+                        )
+                    })
+
+                    genres.forEach(genre=> {
+                        findOrCreate.findOrCreateGenre(
+                            genre,
+                            res,
+                            (error, genre_id)=> {
+                                if (!error && genre_id) {
+                                    con.query(
+                                        `INSERT INTO program_to_genre (program_id, genre_id) VALUES (?, ?);`,
+                                        [program_id, genre_id]
+                                    )
+                                }
+                            }
+                        )
+                    })
+
+                    streaming.forEach(streaming_platform=> {
+                        findOrCreate.findOrCreateStreaming(
+                            streaming_platform,
+                            res,
+                            (error, streaming_platform_id)=> {
+                                if (!error && streaming_platform_id) {
+                                    con.query(
+                                        `INSERT INTO program_to_streaming (program_id, streaming_platform_id) VALUES (?, ?);`,
+                                        [program_id, streaming_platform_id]
+                                    )
+                                }
+                            }
+                        )
+                    })
+
+                    directors.forEach(director=> {
+                        findOrCreate.findOrCreateDirector(
+                            director.first_name,
+                            director.last_name,
+                            res,
+                            (error, director_id)=> {
+                                if (!error && director_id) {
+                                    con.query(
+                                        `INSERT INTO program_to_director (program_id, director_id) VALUES (?, ?)`,
+                                        [program_id, director_id]
+                                    )
+                                }
+                            }
+                        )
+                    })
+
+                    res.redirect(`/programs/id/${program_id}`)
+                }
+            )
+        }
+    )
+},
 
     findProgramInfo: (res, table)=> {
 

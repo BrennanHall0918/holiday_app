@@ -4,7 +4,6 @@ module.exports = function (str) {
     const keepLower = ["a","an", "and", "at", "the", "or"]
 
     return str
-        .toLowerCase()
         .split(" ")
         .map((word, i)=> {
             if (i !== 0 && keepLower.includes(word)) return word
@@ -12,3 +11,4 @@ module.exports = function (str) {
         })
         .join(" ")
 }
+
