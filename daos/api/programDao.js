@@ -1,7 +1,6 @@
 const { render } = require('ejs')
 const con = require ('../../config/dbconfig')
 const { queryAction } = require('../../helpers/queryAction')
-const { insertIntoPivot } = require('../../helpers/insertIntoPivot')
 const findOrCreate = require('../../helpers/findOrCreate_Functions')
 
 const programDao = {

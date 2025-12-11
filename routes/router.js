@@ -57,11 +57,7 @@ const endpoints = [
     'director',
     'genre',
     'production',
-    'streaming_platform',
-    'program_to_actor',
-    'program_to_director',
-    'program_to_genre',
-    'program_to_streaming'
+    'streaming_platform'
 ]
 
 endpoints.forEach(endpoint => {
