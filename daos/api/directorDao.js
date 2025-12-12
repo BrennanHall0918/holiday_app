@@ -24,11 +24,20 @@ const directorDao = {
                 queryAction(res, error, rows, table)
             }
         )
-    }
+    },
 
-    // favoriteGenre: (res, id, table)=> {
-    //     const sql =
-    // }
+    unusedDirectors: (res, table) => {
+    const sql = `
+        SELECT d.*
+        FROM director d
+        LEFT JOIN program_to_director pd ON d.director_id = pd.director_id
+        WHERE pd.director_id IS NULL;
+    `;
+
+    con.query(sql, (error, rows) => {
+        queryAction(res, error, rows, table);
+    });
+}
     
 }
 

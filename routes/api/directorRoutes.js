@@ -24,13 +24,17 @@ router.get('/sort/:sorter', (req, res)=> {
 })
 
 // http://localhost:300/api/director/count
-router.get('/count', (req,res)=> {
+router.get('/count', (req, res)=> {
     dao.countAll(res, dao.table)
 })
 
 // http://localhost:3000/api/director/directed/${id}
 router.get('/directed/:id', (req, res)=> {
     dao.directed(res, req.params.id, dao.table)
+})
+
+router.get('/directed/unused', (req, res)=> {
+    dao.unusedDirectors(res, dao.table)
 })
 
 // http://lovalhost:300/api/director/id/${id}

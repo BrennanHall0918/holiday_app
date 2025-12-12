@@ -33,9 +33,8 @@ router.post('/', (req, res)=> {
 })
 
 // http://localhost:3000/api/actor/program/${column}/${term}
-router.get('/search/:column/:term', (req, res)=> {
-    const { column, term } = req.params
-    dao.search(res, dao.table, column, term)
+router.get('/search', (req, res)=> {
+    dao.search(res, dao.table, 'title', req.query.term)
 })  
 
 // http:localhost:3000/api/program/${sorter}

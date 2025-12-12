@@ -30,7 +30,7 @@ const programDao = {
                 }
 
                 res.render('pages/programs', {
-                    title: title,
+                    title: 'All Programs',
                     name: 'All Programs',
                     programs: rows
                 })
